@@ -225,8 +225,11 @@ def create_test_report(data, email_format, db_options,
         "storage_url": rcommon.DEFAULT_STORAGE_URL,
         "test_groups": groups,
     }
+    if "AGL" in image_type:
+        template = plan_options.get("template", "agl_test.txt")
+    else:
+        template = plan_options.get("template", "test.txt")
 
-    template = plan_options.get("template", "test.txt")
     template_data.update(plan_options.get("params", {}))
     body = rcommon.create_txt_email(template, **template_data)
 
