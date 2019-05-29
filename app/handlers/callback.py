@@ -175,9 +175,11 @@ class LavaCallbackHandler(CallbackHandler):
         job_meta_keys = job_meta.keys()
         for k in job_meta_keys:
             if k not in all_keys:
+                self.log.error("invalid LAVA metadata: {}".format(k))
                 return False, "invalid LAVA metadata: {}".format(k)
         for k in mandatory_keys:
             if k not in job_meta_keys:
+                self.log.error("missing mandatory LAVA metadata: {}".format(k))
                 return False, "missing mandatory LAVA metadata: {}".format(k)
         return True, ''
 
