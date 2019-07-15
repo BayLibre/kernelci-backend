@@ -228,7 +228,7 @@ def send_email(subject, txt_body, html_body, email_opts, config, headers=None):
         except (smtplib.SMTPRecipientsRefused, smtplib.SMTPSenderRefused), ex:
             utils.LOG.error(
                 "Error sending email: recipients or sender refused")
-            errors.append((ex.smtp_code, ex.smtp_error))
+#            errors.append((ex.smtp_code, ex.smtp_error))
         except (smtplib.SMTPHeloError, smtplib.SMTPDataError), ex:
             utils.LOG.error("SMTP server error")
             errors.append((ex.smtp_code, ex.smtp_error))
